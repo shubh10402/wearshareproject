@@ -7,7 +7,7 @@ import './assets/css/adminlte.css'
 import './assets/css/adminlte.min.css'
 import { UserSidebar } from './component/layout/UserSidebar'
 import { SignUp } from './component/common/SignUp'
-import { BrowserRouter,Routes, Route } from 'react-router-dom';
+import { BrowserRouter,Routes, Route } from 'react-router-dom'
 import { Loginpageuser } from './component/common/Loginpageuser'
 
 
@@ -19,10 +19,12 @@ function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <body className='layout-fixed sidebar-expand-lg bg-body-tertiary sidebar-open app-loaded'>
-      <div className='app-wrapper'>
-       <UserSidebar>  </UserSidebar>
-       {/* <UserNavbar></UserNavbar> */}
+    <body> 
+     
+
+      <div >
+       {/* <UserSidebar>  </UserSidebar> */}
+       <UserNavbar></UserNavbar>
        
        
        {/* <SignUp></SignUp> */}

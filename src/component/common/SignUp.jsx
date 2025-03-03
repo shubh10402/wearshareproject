@@ -29,9 +29,9 @@ export const SignUp = () => {
   <div className="register-box" 
       style={
         {
-          marginTop: 110 ,
-      marginLeft: 450 , 
-      textAlign:'center'
+          marginTop: 90 ,
+      marginLeft: 560 , 
+      textAlign:'center',
       }
       }
        >
