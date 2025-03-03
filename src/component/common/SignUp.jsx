@@ -1,156 +1,30 @@
-// import React, { useState } from 'react'
-// import { UserNavbar } from '../layout/UserNavbar'
-// import { UserSidebar } from '../layout/UserSidebar'
-// import axios from 'axios'
-// import { useNavigate } from 'react-router-dom'
-
-// export const SignUp = () => {
-//   const [fullname,setname]=useState('')
-//   const [email,setemail]=useState('')
-//   const [password,setpassword]=useState('')
-//   const [retypepassword,setretypepassword]=useState('')
-//   const navigate=useNavigate()
-
-
-//   const handleSubmit=(e)=>{
-//     e.preventDefault()
-//     axios.post('http://localhost:3001/register',{fullname,email,password,retypepassword})
-//     .then(result=>console.log(result))
-//     navigate('/Loginpageuser')
-    
-//     .catch(err=>console.log(err))
-    
-//   }
-//   return (
-    
-//     <>
-//     {/* <UserNavbar ></UserNavbar> */}
-//     {/* <UserSidebar></UserSidebar> */}
-//   <div className="register-box" 
-//       style={
-//         {
-//           marginTop: 90 ,
-//       marginLeft: 560 , 
-//       textAlign:'center',
-//       }
-//       }
-//        >
-        
-//     <div className="card card-outline card-primary" >
-      
-//       <div className="card-header text-center" >
-//         <a href="/" className="h1" >
-//           <b>Wear</b>Share
-//         </a>
-//       </div>
-//       <div className="card-body">
-//         <p className="login-box-msg">Register With Us!</p>
-//         <form onSubmit={handleSubmit}>
-//           <div className="input-group mb-3">
-//             <input
-//               type="text"
-//               className="form-control"
-//               placeholder="Full name"
-//               onChange={(e)=>setname(e.target.value)}
-//             />
-//             <div className="input-group-append">
-//               <div className="input-group-text">
-//                 <span className="fas fa-user" />
-//               </div>
-//             </div>
-//           </div>
-//           <div className="input-group mb-3">
-//             <input type="email" className="form-control" placeholder="Email"
-//             onChange={(e=>setemail(e.target.value))} />
-//             <div className="input-group-append">
-//               <div className="input-group-text">
-//                 <span className="fas fa-envelope" />
-//               </div>
-//             </div>
-//           </div>
-//           <div className="input-group mb-3">
-//             <input
-//               type="password"
-//               className="form-control"
-//               placeholder="Password"
-//               mixLength="4"
-//               maxLength="16"   
-//               onChange={(e)=>setpassword(e.target.value)}
-
-//              />
-//             <div className="input-group-append">
-//               <div className="input-group-text">
-//                 <span className="fas fa-lock" />
-//               </div>
-//             </div>
-//           </div>
-//           <div className="input-group mb-3">
-//             <input
-//               type="password"
-//               className="form-control"
-//               placeholder="Retype password"
-//               onChange={(e)=>setretypepassword(e.target.value)}
-//             />
-//             <div className="input-group-append">
-//               <div className="input-group-text">
-//                 <span className="fas fa-lock" />
-//               </div>
-//             </div>
-//           </div>
-//           <div className="row">
-            
-//             {/* /.col */}
-//             <div className="col-12">
-//               <button type="submit" className="btn btn-primary btn-block" >
-//                 Register
-//               </button>
-//             </div>
-//             {/* /.col */}
-//           </div>
-//         </form>
-        
-//         <a href="./Loginpageuser" className="text-center">
-//           I already have a Account
-//         </a>
-//       </div>
-//       {/* /.form-box */}
-//     </div>
-//     {/* /.card */}
-//   </div>
-//   {/* /.register-box */}
-//   {/* jQuery */}
-//   {/* Bootstrap 4 */}
-//   {/* AdminLTE App */}
-// </>
-
-    
-//   )
-// }
-// export default SignUp
+// Sign Up page for user registration
 
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+
+//Export for DB connection
 export const SignUp = () => {
-  const [fullname, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [fullname, setName] = useState(''); // State for full name
+  const [email, setEmail] = useState('');   // State for email
   const [password, setPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
   const [errors, setErrors] = useState({}); // State for validation errors
   const navigate = useNavigate();
 
-  const validate = () => {
+  const validate = () => {  //Validation for user registration
     let errors = {};
-
+                             //Validation for full name
     if (!fullname.trim()) {
       errors.fullname = 'Full name is required';
-    }
+    }                        //Validation for email
     if (!email) {
       errors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       errors.email = 'Invalid email format';
-    }
+    }                 //valid for password
     if (!password) {
       errors.password = 'Password is required';
     } else if (password.length < 4) {
@@ -163,7 +37,7 @@ export const SignUp = () => {
       errors.retypePassword = 'Passwords do not match';
     }
 
-    setErrors(errors);
+    setErrors(errors);  //checkError for validation
     return Object.keys(errors).length === 0;
   };
 
@@ -172,16 +46,16 @@ export const SignUp = () => {
     
     if (!validate()) return; // Stop form submission if validation fails
 
-    axios
+    axios  //Axios for user registration & Server connection 
       .post('http://localhost:3001/register', { fullname, email, password })
       .then((result) => {
         console.log(result);
         navigate('/Loginpageuser');
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err));  //Error handling for catching error
   };
 
-  return (
+  return (         //user registration Form with validation 
     <div className="register-box" style={{ marginTop: 90, marginLeft: 560, textAlign: 'center' }}>
       <div className="card card-outline card-primary">
         <div className="card-header text-center">
@@ -191,10 +65,10 @@ export const SignUp = () => {
           <p className="login-box-msg">Register With Us!</p>
           <form onSubmit={handleSubmit}>
             <div className="input-group mb-3">
-              <input
+              <input                      //Full name input
                 type="text"
                 className="form-control"
-                placeholder="Full name"
+                placeholder="Full name" 
                 value={fullname}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -202,7 +76,7 @@ export const SignUp = () => {
             </div>
 
             <div className="input-group mb-3">
-              <input
+              <input            //Email input
                 type="email"
                 className="form-control"
                 placeholder="Email"
@@ -214,7 +88,7 @@ export const SignUp = () => {
 
             <div className="input-group mb-3">
               <input
-                type="password"
+                type="password"    //Password input
                 className="form-control"
                 placeholder="Password"
                 value={password}
@@ -225,7 +99,7 @@ export const SignUp = () => {
 
             <div className="input-group mb-3">
               <input
-                type="password"
+                type="password"    //Retype password input
                 className="form-control"
                 placeholder="Retype password"
                 value={retypePassword}
@@ -233,7 +107,7 @@ export const SignUp = () => {
               />
               {errors.retypePassword && <p className="text-danger">{errors.retypePassword}</p>}
             </div>
-
+ {/* Submit button */}
             <button type="submit" className="btn btn-primary btn-block">Register</button>
           </form>
 
@@ -243,5 +117,5 @@ export const SignUp = () => {
     </div>
   );
 };
-
+//Export for SignUp
 export default SignUp;

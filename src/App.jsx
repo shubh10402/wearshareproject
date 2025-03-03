@@ -15,28 +15,28 @@ import { Loginpageuser } from './component/common/Loginpageuser'
 
 
 
-function App() {
+function App() {    //App function
   // const [count, setCount] = useState(0)
 
-  return (
+  return (      //Return for App function
     <body> 
      
 
-      <div >
+      <div >      
        {/* <UserSidebar>  </UserSidebar> */}
-       <UserNavbar></UserNavbar>
+       <UserNavbar></UserNavbar>     {/* NAvbardisplay */}
        
        
-       {/* <SignUp></SignUp> */}
+       {/* <SignUp></SignUp> */}     {/* Signuppage  */}
        {/* <Loginpageuser></Loginpageuser> */}
        <div> 
-        
+            {/*Routing */}
         {/* <Routes>
           <Route path="/" element={<UserSidebar/>}></Route>
         </Routes> */}
-        
+                  {/* Routing  for signup&login */}
        <Routes>
-          <Route path="/signup" element={<SignUp/>}></Route>
+          <Route path="/signup" element={<SignUp/>}></Route>  
        </Routes>
        <Routes>
           <Route path="/Loginpageuser" element={<Loginpageuser/>}></Route>
@@ -52,4 +52,4 @@ function App() {
   )
 }
 
-export default App
+export default App //Export for App function
