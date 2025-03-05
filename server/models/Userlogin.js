@@ -15,10 +15,10 @@ const UserSchema = new mongoose.Schema({        //User schema for user registrat
         type: String,
         required: true
     },  
-    retypepassword: {           //Retype password
-        type: String,
-        required: true
-    }
+    // retypepassword: {           //Retype password
+    //     type: String,
+    //     required: true
+    // }
 });
 
 const usermodel = mongoose.model('user', UserSchema);   //User model for user registration

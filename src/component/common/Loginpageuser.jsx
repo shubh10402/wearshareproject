@@ -48,11 +48,15 @@ export const Loginpageuser = () => {
       .catch(err => console.log(err)); // Error handling
   };
 
-  return (
-    <div className="card-body login-card-body">
+  return ( 
+    <div className="card-body login-card-body" style={{ marginTop: 90, marginLeft: 450, marginRight:400 , textAlign: 'center', borderRadius:5,borderWidth: 2, borderColor: 'blue',borderStyle: 'double'}}>
+      <div className="card-header text-center" style={{ borderWidth: 0.5, borderColor: 'grey',borderStyle: 'solid'}}>
+          <a href="./" className="h1"><b>Wear</b>Share</a>
+        </div>
+      
       <p className="login-box-msg">Sign in with us</p>
       <form onSubmit={handleSubmit}>
-        <div className="input-group mb-3"> {/* EmailInput*/}
+        <div className="input-group mb-3"> {/* EmailInput*/}  
           <input
             type="email"
             className="form-control"

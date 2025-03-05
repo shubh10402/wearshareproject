@@ -47,9 +47,9 @@ export const SignUp = () => {
     if (!validate()) return; // Stop form submission if validation fails
 
     axios  //Axios for user registration & Server connection 
-      .post('http://localhost:3001/register', { fullname, email, password })
+      .post('http://localhost:3001/register', { fullname, email, password  })
       .then((result) => {
-        console.log(result);
+        console.log(result.data);
         navigate('/Loginpageuser');
       })
       .catch((err) => console.log(err));  //Error handling for catching error
@@ -59,7 +59,7 @@ export const SignUp = () => {
     <div className="register-box" style={{ marginTop: 90, marginLeft: 560, textAlign: 'center' }}>
       <div className="card card-outline card-primary">
         <div className="card-header text-center">
-          <a href="/" className="h1"><b>Wear</b>Share</a>
+          <a href="./" className="h1"><b>Wear</b>Share</a>
         </div>
         <div className="card-body">
           <p className="login-box-msg">Register With Us!</p>

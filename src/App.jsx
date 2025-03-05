@@ -24,7 +24,7 @@ function App() {    //App function
 
       <div >      
        {/* <UserSidebar>  </UserSidebar> */}
-       <UserNavbar></UserNavbar>     {/* NAvbardisplay */}
+       <UserNavbar></UserNavbar>     
        
        
        {/* <SignUp></SignUp> */}     {/* Signuppage  */}
