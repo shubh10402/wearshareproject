@@ -12,7 +12,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.bg {
+  width: 100%;
+  height: 100%;
+  background-image: url(./images/DALL·E\ 2025-03-03\ 18.08.43\ -\ A\ group\ of\ kind-hearted\ people\ donating\ clothes\ at\ an\ outdoor\ charity\ drive.\ Large\ donation\ bins\ filled\ with\ warm\ clothing\ such\ as\ jackets\,\ sweaters\,\ .jpg);
+}
 a {
   font-weight: 500;
   color: #646cff;

@@ -54,7 +54,7 @@ export const Loginpageuser = () => {
           <a href="./" className="h1"><b>Wear</b>Share</a>
         </div>
       
-      <p className="login-box-msg">Sign in with us</p>
+      <h4 className="login-box-msg">Sign in with us</h4>
       <form onSubmit={handleSubmit}>
         <div className="input-group mb-3"> {/* EmailInput*/}  
           <input
@@ -96,7 +96,7 @@ export const Loginpageuser = () => {
 {/* Forgot password link */}
       <p className="mb-1">  
         
-        <a href="forgot-password.html">I forgot my password</a>
+        <a href="./Forgatpassword">I forgot my password</a>
       </p>
       
  {/* Register a new membership link */}
