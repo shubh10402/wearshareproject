@@ -11,6 +11,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Loginpageuser } from './component/common/Loginpageuser'
 import { Forgatpassword } from './component/common/Forgatpassword'
 
+import { AdminLogin } from './component/admin/adminlogin'
 
 
 
@@ -42,6 +43,9 @@ function App() {    //App function
        <Routes>
           <Route path='/Forgatpassword' element={<Forgatpassword/>}></Route>
        </Routes>
+       <Routes>
+            <Route path='/adminlogin' element={<AdminLogin/>}></Route>
+       </Routes>
        
        </div>
 
@@ -51,6 +55,6 @@ function App() {    //App function
       
     </body>
   )
-}
+};
 
 export default App //Export for App function
