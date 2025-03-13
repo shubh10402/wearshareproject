@@ -15,11 +15,20 @@ const UserSchema = new mongoose.Schema({        //User schema for user registrat
         type: String,
         required: true
     },  
+    role: {                     //Role
+        type: String,
+        required: true,
+        default: 'visitor'
+
+
+    },
     // retypepassword: {           //Retype password
     //     type: String,
     //     required: true
     // }
-});
+}, 
+);
+ 
 
 const usermodel = mongoose.model('user', UserSchema);   //User model for user registration
-module.exports = usermodel;         //Exporting user model
+module.exports = usermodel;         //Exporting user model 

@@ -2,9 +2,10 @@
 
 {/*UserLogin page*/}
 //importing axios and react
-  import axios from 'axios';
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
     //Login page DB connection
 export const Loginpageuser = () => {
   const [email, setEmail] = useState('');
@@ -30,7 +31,7 @@ export const Loginpageuser = () => {
     setErrors(errors);
     return Object.keys(errors).length === 0;
   };
-
+  axios.defaults.withCredentials = true; // Axios for user login & server connection
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -39,10 +40,19 @@ export const Loginpageuser = () => {
     axios.post('http://localhost:3001/login', { email, password })  // Axios for user login & server connection
       .then(result => {
         console.log(result);
-        if (result.data === "Success") {
+        if (result.data.Status === "Success") {
+          if (result.data.role === 'admin') {     //Admin login validation
+            navigate('/Dashboard');
+          } else ( result.data.role === 'visitor')  //User login validation
+           { 
+            navigate('/app');
+           }
+
+          
+        } else {   //Error handling & temporary navigate
+          // alert(result.data);
           navigate('/app');
-        } else {
-          alert(result.data);
+
         }
       })
       .catch(err => console.log(err)); // Error handling
@@ -54,7 +64,7 @@ export const Loginpageuser = () => {
           <a href="./" className="h1"><b>Wear</b>Share</a>
         </div>
       
-      <h4 className="login-box-msg">Sign in with us</h4>
+      <p className="login-box-msg">Sign in with us</p>
       <form onSubmit={handleSubmit}>
         <div className="input-group mb-3"> {/* EmailInput*/}  
           <input
@@ -96,7 +106,7 @@ export const Loginpageuser = () => {
 {/* Forgot password link */}
       <p className="mb-1">  
         
-        <a href="./Forgatpassword">I forgot my password</a>
+        <a href="forgot-password.html">I forgot my password</a>
       </p>
       
  {/* Register a new membership link */}

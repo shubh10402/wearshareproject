@@ -10,8 +10,8 @@ import { SignUp } from './component/common/SignUp'
 import { Routes, Route } from 'react-router-dom'
 import { Loginpageuser } from './component/common/Loginpageuser'
 import { Forgatpassword } from './component/common/Forgatpassword'
-
-import { AdminLogin } from './component/admin/adminlogin'
+import { Dashboard } from './component/admin/Dashboard'
+import { AdminLogin } from './component/admin/adminlogin' 
 
 
 
@@ -45,6 +45,9 @@ function App() {    //App function
        </Routes>
        <Routes>
             <Route path='/adminlogin' element={<AdminLogin/>}></Route>
+       </Routes>
+       <Routes>
+            <Route path='/dashboard' element={<Dashboard/>}></Route>
        </Routes>
        
        </div>
