@@ -18,6 +18,7 @@ import { AdminLogin } from './component/admin/adminlogin'
 
 
 
+
 function App() {    //App function
   // const [count, setCount] = useState(0)
 
@@ -44,11 +45,12 @@ function App() {    //App function
           <Route path='/Forgatpassword' element={<Forgatpassword/>}></Route>
        </Routes>
        <Routes>
-            <Route path='/adminlogin' element={<AdminLogin/>}></Route>
+            <Route path='/Adminlogin' element={<AdminLogin/>}></Route>
        </Routes>
        <Routes>
-            <Route path='/dashboard' element={<Dashboard/>}></Route>
+            <Route path='/Dashboard' element={<Dashboard/>}></Route>
        </Routes>
+       
        
        </div>
 

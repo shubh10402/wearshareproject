@@ -10,18 +10,45 @@ const usermodel = require('./models/Userlogin'); //User model for user login
 const bcrypt = require('bcrypt');  //Bcrypt for password encryption
 const jwt = require('jsonwebtoken');  //JWT for token generation
 const cookieParser = require('cookie-parser');  //Cookie parser for cookie
+
 //creating express app
 const app = express();
-app.use(express.json());
-app.use(cors({
-    origin: ['http://localhost:5173'],
-    credentials: true,
+app.use(express.json());        
+app.use(cors({      
+    origin: ['http://localhost:5173'],      
+    credentials: true,                  
     methods: ['GET', 'POST'],
 }
 ));
 //connecting to mongodb
 mongoose.connect("mongodb://127.0.0.1:27017/userlogin"); //DB connection --> use as 127.0.0.1 or localhost
-app.post('/login',(req,res)=>{  //Login page for user
+ const verifyUser= (req,res,next)=>{  //User verification
+    const token = req.cookies.token;
+    if(!token){
+        return res.json("Access Denied")
+    }else{
+        jwt.verify(token,'jwt-secret-key',(err,decoded)=>{
+            if(err){
+                return res.json("Invalid Token")
+            }else{
+                 if(decoded.role==='admin'){
+                     next()
+
+            } else {
+                return res.json("Access Denied as you are not an admin")
+            }
+        }})
+    
+    }    
+}
+//Dashboard page for user 
+
+app.get('/dashboard',verifyUser,(req,res)=>{  
+    res.json({Status:"Success"})
+}
+)
+//Login page for user
+app.post('/login',(req,res)=>{  
     const {email,password}=req.body;
     
     //Password encryption
@@ -33,7 +60,7 @@ app.post('/login',(req,res)=>{  //Login page for user
                     if(response){
                         const token =
                         jwt.sign({email: user.email, role: user.role}, 'jwt-secret-key',{expiresIn: '1h'});
-                        res.cookie('token', token)
+                        res.cookie('token', token) 
                         return res.json({Status:"Success", role:user.role})
                     }
                     else{
