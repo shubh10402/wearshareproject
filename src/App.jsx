@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { UserNavbar } from './component/layout/UserNavbar'
@@ -20,8 +20,7 @@ import { AdminLogin } from './component/admin/adminlogin'
 
 
 function App() {    //App function
-  // const [count, setCount] = useState(0)
-
+  
   return (      //Return for App function
     <body> 
      
@@ -50,7 +49,8 @@ function App() {    //App function
        <Routes>
             <Route path='/Dashboard' element={<Dashboard/>}></Route>
        </Routes>
-       
+
+        
        
        </div>
 

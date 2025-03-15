@@ -47,6 +47,12 @@ app.get('/dashboard',verifyUser,(req,res)=>{
     res.json({Status:"Success"})
 }
 )
+// Showing page from table ==> usertableshow 
+app.get('/Userlogindata',(req,res) => {    // request the data from Userlogin page
+    usermodel.find()                    //fetch all the records from a table 
+    .then(user => res.json(user))
+    .catch(err => res.json(err))
+})
 //Login page for user
 app.post('/login',(req,res)=>{  
     const {email,password}=req.body;
