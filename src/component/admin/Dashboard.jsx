@@ -1,27 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AdminSidebar } from "../admin/Adminsidebar";
 
-axios.defaults.withCredentials = true; // Set once, outside the component
+axios.defaults.withCredentials = true;
 
 export const Dashboard = () => {
-  const [Success, setSuccess] = useState("");
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
-
-  // Authentication Check
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:3001/Dashboard")
-  //     .then((result) => {
-  //       if (result.data.Status === "Success") {
-  //         setSuccess("Success Login");
-  //       } else {
-  //         navigate("/");
-  //       }
-  //     })
-  //     .catch((err) => console.log("Error fetching dashboard data:", err));
-  // }, [navigate]);
 
   // Fetch User login Data
   useEffect(() => {
@@ -32,16 +18,24 @@ export const Dashboard = () => {
   }, []);
 
   return (
-    <>
-      <div>Dashboard</div>
-      <div className="w-100 vh-100 d-flex justify-content-center align-items-center">
-        <table className="table">
+    <div className="d-flex" style={{ height: "100vh" }}>
+      
+      {/* Sidebar */}
+      <div style={{ width: "250px" }}>  
+        <AdminSidebar />
+      </div>
+
+      {/* Table Section */}
+      <div className="flex-grow-1 p-4" style={{ overflowX: "auto" }}>
+        <h1 style={{ textAlign:"center"}}>Dashboard</h1>
+        <h3 style={{ textAlign:"center", paddingTop:"5px"}}>Login Detail</h3>
+        
+        <table className="table table-bordered" style={{ width: "100%" }}>
           <thead>
             <tr>
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
-              {/* <th>Password</th> */}
             </tr>
           </thead>
           <tbody>
@@ -50,13 +44,13 @@ export const Dashboard = () => {
                 <td>{userData.fullname}</td>
                 <td>{userData.email}</td>
                 <td>{userData.role}</td>
-                {/* <td>{userData.password}</td> */}
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-    </>
+      
+    </div>
   );
 };
 

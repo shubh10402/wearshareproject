@@ -12,6 +12,7 @@ import { Loginpageuser } from './component/common/Loginpageuser'
 import { Forgatpassword } from './component/common/Forgatpassword'
 import { Dashboard } from './component/admin/Dashboard'
 import { AdminLogin } from './component/admin/adminlogin' 
+import { AdminSidebar } from './component/admin/Adminsidebar'
 
 
 

@@ -29,7 +29,7 @@ export const UserNavbar = () => {
       </li>
       <li className="nav-item d-none d-md-block">
         <Link class="nav-link" to="/SignUp">
-          SignUp
+          Donate Now
           </Link>
         
       </li>
