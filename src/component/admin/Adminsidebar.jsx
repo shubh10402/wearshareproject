@@ -24,13 +24,14 @@ export const AdminSidebar = () => {
             
             {/* Wear Share Menu */}
             <li className="nav-item menu-open">
-              <a href="." className="nav-link active">
+            <a href="." className="nav-link active">
                 <i className="nav-icon bi bi-speedometer" />
                 <p>
                   Wear Share
                   <i className="nav-arrow bi bi-chevron-right" />
                 </p>
-              </a>
+                </a>
+              
               <ul className="nav nav-treeview">
                 {['Dashboard v1', 'Dashboard v2', 'Dashboard v3'].map((item, index) => (
                   <li className="nav-item" key={index}>

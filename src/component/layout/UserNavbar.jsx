@@ -28,7 +28,7 @@ export const UserNavbar = () => {
         </a>
       </li>
       <li className="nav-item d-none d-md-block">
-        <Link class="nav-link" to="/SignUp">
+        <Link class="nav-link" to="/Loginpageuser">
           Donate Now
           </Link>
         
