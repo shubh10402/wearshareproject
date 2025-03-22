@@ -1,0 +1,178 @@
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import '../common/css/adminlte.css';
+import "../common/css/adminlte.min.css";
+
+export const Userdonateform = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    try {
+      console.log('Form Data:', data);
+      await axios.post('/api/submit', data);  // Replace with your API endpoint
+      navigate('/success');  // Redirect after submission
+    } catch (error) {
+      console.error('Error submitting form', error);
+    }
+  };
+
+  return (
+    <div className="container mt-4" style={{ maxWidth: '600px' , border: '1px solid black', padding: '20px', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
+      <h2 > Donation Form</h2>
+      <form onSubmit={handleSubmit(onSubmit)}>
+
+        <div className="form-group">
+          <label>Full Name</label>
+          <input 
+            {...register('name', { 
+              required: 'Name is required', 
+              minLength: { value: 3, message: 'Minimum length is 3 characters' } 
+            })} 
+            className="form-control" 
+          />
+          {errors.name && <span className="text-danger">{errors.name.message}</span>}
+        </div>
+        {/* <div className="form-group col-md-6 pl-2">
+              <label>Surname</label>
+              <input
+                {...register('surname', {
+                  required: 'Surname is required',
+                  minLength: { value: 3, message: 'Minimum 3 characters' }
+                })}
+                className="form-control"
+                placeholder="Surname"
+              />
+              {errors.surname && <span className="text-danger">{errors.surname.message}</span>}
+            </div> */}
+        
+
+        <div className="form-group">
+          <label>Email</label>
+          <input 
+            type="email" 
+            {...register('email', { 
+              required: 'Email is required', 
+              pattern: { value: /\S+@\S+\.\S+/, message: 'Enter a valid email' } 
+            })} 
+            className="form-control" 
+          />
+          {errors.email && <span className="text-danger">{errors.email.message}</span>}
+        </div>
+
+        <div className="form-group">
+          <label>Phone Number</label>
+          <input 
+            type="tel" 
+            {...register('phone', { 
+              required: 'Phone is required', 
+              pattern: { value: /^[0-9]{10}$/, message: 'Enter a valid 10-digit phone number' } 
+            })} 
+            className="form-control" 
+          />
+          {errors.phone && <span className="text-danger">{errors.phone.message}</span>}
+        </div>
+
+        <div className="form-group">
+          <label>Number of Clothes</label>
+          <input 
+            type="number" 
+            {...register('numClothes', { 
+              required: 'This field is required', 
+              min: { value: 1, message: 'Must be at least 1' } 
+            })} 
+            className="form-control" 
+          />
+          {errors.numClothes && <span className="text-danger">{errors.numClothes.message}</span>}
+        </div>
+
+        <div className="form-group">
+          <label>Condition of the Clothes</label>
+          <select {...register('condition', { required: 'Select a condition' })} className="form-control">
+            <option value="">Select...</option>
+            <option>Brand New</option>
+            <option>Very Good Condition</option>
+            <option>Good Condition</option>
+            <option>Average Condition</option>
+            <option>Bad Condition</option>
+          </select>
+          {errors.condition && <span className="text-danger">{errors.condition.message}</span>}
+        </div>
+
+        <div className="form-group">
+          <label>Type of Clothes</label>
+          <select {...register('type', { required: 'Select a type' })} className="form-control">
+            <option value="">Select...</option>
+            <option>Wedding Dress</option>
+            <option>Bridesmaid Dress</option>
+            <option>Formal Dress</option>
+            <option>Other</option>
+          </select>
+          {errors.type && <span className="text-danger">{errors.type.message}</span>}
+        </div>
+
+        <div className="form-group">
+          <label>Fabric</label>
+          <select {...register('fabric', { required: 'Select fabric type' })} className="form-control">
+            <option value="">Select...</option>
+            <option>Cotton</option>
+            <option>Silk</option>
+            <option>Denim</option>
+            <option>Leather</option>
+          </select>
+          {errors.fabric && <span className="text-danger">{errors.fabric.message}</span>}
+        </div>
+
+        <div className="form-group">
+          <label>Color</label>
+          <select {...register('color', { required: 'Select a color' })} className="form-control">
+            <option value="">Select...</option>
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Black</option>
+            <option>White</option>
+          </select>
+          {errors.color && <span className="text-danger">{errors.color.message}</span>}
+        </div>
+
+        <div className="form-group">
+          <label>Size</label>
+          <select {...register('size', { required: 'Select a size' })} className="form-control">
+            <option value="">Select...</option>
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+            <option>XL</option>
+          </select>
+          {errors.size && <span className="text-danger">{errors.size.message}</span>}
+        </div>
+
+        <div className="form-group">
+          <label>Upload Photos</label>
+          <input 
+            type="file" 
+            {...register('photos', { required: 'Upload at least one photo' })} 
+            multiple 
+            className="form-control" 
+          />
+          {errors.photos && <span className="text-danger">{errors.photos.message}</span>}
+        </div>
+
+        
+        <div className="form-group">
+          <label>Additional Information</label>
+          <textarea 
+            {...register('additionalInfo')} 
+            className="form-control">
+          </textarea>
+        </div>
+
+        <button type="submit" className="btn btn-primary mt-3" >Submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default Userdonateform;

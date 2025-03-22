@@ -20,6 +20,10 @@ app.use(cors({
     methods: ['GET', 'POST'],
 }
 ));
+
+const donateRouter = require('./routes/donateRouter'); //Donate router for donation
+app.use('/donate', donateRouter); //Donate router for donation
+
 //connecting to mongodb
 mongoose.connect("mongodb://127.0.0.1:27017/userlogin"); //DB connection --> use as 127.0.0.1 or localhost
  const verifyUser= (req,res,next)=>{  //User verification

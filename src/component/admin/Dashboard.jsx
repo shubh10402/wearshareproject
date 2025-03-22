@@ -28,9 +28,9 @@ export const Dashboard = () => {
       {/* Table Section */}
       <div className="flex-grow-1 p-4" style={{ overflowX: "auto" }}>
         <h1 style={{ textAlign:"center"}}>Dashboard</h1>
-        <h3 style={{ textAlign:"center", paddingTop:"5px"}}>Login Detail</h3>
+        <h3 style={{ textAlign:"center", paddingTop:"5px"}}> User Detail</h3>
         
-        <table className="table table-bordered" style={{ width: "100%" }}>
+        <table className="table table-bordered" style={{ width: "100%" , borderStyle:"solid",borderColor:"grey"}}>
           <thead>
             <tr>
               <th>Name</th>
@@ -50,7 +50,10 @@ export const Dashboard = () => {
         </table>
       </div>
       
+      
     </div>
+
+    
   );
 };
 

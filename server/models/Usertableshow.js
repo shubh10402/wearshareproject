@@ -8,6 +8,7 @@ const UserSchema = new mongoose.Schema
     email:String,
     role:String,
     
+    
 })
 const usermodel = mongoose.model('user', UserSchema);   //User model for user registration
 module.exports = usermodel;         //Exporting user model 

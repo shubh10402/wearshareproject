@@ -1,5 +1,6 @@
 import React from 'react'
-import '../../assets/css/adminlte.min.css' // Use only the minified version
+import '../common/css/adminlte.css' // Use only the minified version
+import { Link } from "react-router-dom";
 
 export const AdminSidebar = () => {
   return (
@@ -24,25 +25,24 @@ export const AdminSidebar = () => {
             
             {/* Wear Share Menu */}
             <li className="nav-item menu-open">
-            <a href="." className="nav-link active">
+            <Link className="nav-link active" to="/Dashboard">
                 <i className="nav-icon bi bi-speedometer" />
                 <p>
-                  Wear Share
+                  Registered Details
                   <i className="nav-arrow bi bi-chevron-right" />
                 </p>
-                </a>
-              
-              <ul className="nav nav-treeview">
-                {['Dashboard v1', 'Dashboard v2', 'Dashboard v3'].map((item, index) => (
-                  <li className="nav-item" key={index}>
-                    <a href={`./index${index + 1}.html`} className={`nav-link ${index === 0 ? 'active' : ''}`}>
-                      <i className="nav-icon bi bi-circle" />
-                      <p>{item}</p>
-                    </a>
-                  </li>
-                ))}
-              </ul>
+                </Link>
             </li>
+            <li className="nav-item menu-open">
+            <Link className="nav-link active" to="/Addvolunteer">
+                <i className="nav-icon bi bi-speedometer" />
+                <p>
+                  Add Volunteer
+                  <i className="nav-arrow bi bi-chevron-right" />
+                </p>
+                </Link>
+            </li>
+
 
             {/* Theme Generate */}
             <li className="nav-item">
