@@ -8,13 +8,13 @@ export const AdminSidebar = () => {
       
       {/* Brand Section */}
       <div className="sidebar-brand">
-        <a href="/" className="brand-link">
-          <img
+        <a href="/Dashboard" className="brand-link">
+          {/* <img
             src="/assets/img/AdminLTELogo.png"
             alt="AdminLTE Logo"
             className="brand-image opacity-75 shadow"
-          />
-          <span className="brand-text fw-light">AdminLTE 4</span>
+          /> */}
+          <span className="brand-text fw-light">Wear-Share Admin</span>
         </a>
       </div>
 

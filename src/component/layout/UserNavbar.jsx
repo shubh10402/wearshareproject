@@ -28,6 +28,12 @@ export const UserNavbar = () => {
         </a>
       </li>
       <li className="nav-item d-none d-md-block">
+        <Link class="nav-link" to="/SignUp">
+          Register Now
+          </Link>
+        
+      </li>
+      <li className="nav-item d-none d-md-block">
         <Link class="nav-link" to="/Loginpageuser">
           Donate Now
           </Link>
@@ -35,7 +41,7 @@ export const UserNavbar = () => {
       </li>
       
     </ul>
-    {/*end::Start Navbar Links*/}
+    {/* end::Start Navbar Links
     {/*begin::End Navbar Links*/}
     <ul className="navbar-nav ms-auto">
       {/*begin::Navbar Search*/}
@@ -245,8 +251,7 @@ export const UserNavbar = () => {
       </li>
       {/*end::User Menu Dropdown*/}
     </ul>
-    {/*end::End Navbar Links*/}
-  </div>
+  </div> 
   {/*end::Container*/}
 </nav>
 

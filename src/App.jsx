@@ -11,8 +11,6 @@ import { Routes, Route } from 'react-router-dom'
 import { Loginpageuser } from './component/common/Loginpageuser'
 import { Forgatpassword } from './component/common/Forgatpassword'
 import { Dashboard } from './component/admin/Dashboard'
-// import { AdminLogin } from './component/admin/AdminLogin' 
-import { AdminSidebar } from './component/admin/Adminsidebar'
 import{ Userdonateform} from './component/common/Userdonateform'
 import { Addvolunteer } from './component/admin/Addvolunteer'
 
@@ -43,9 +41,6 @@ function App() {    //App function
        </Routes>
        <Routes>
           <Route path='/Forgatpassword' element={<Forgatpassword/>}></Route>
-       </Routes>
-       <Routes>
-            {/* <Route path='/Adminlogin' element={<AdminLogin/>}></Route> */}
        </Routes>
        <Routes>
             <Route path='/Dashboard' element={<Dashboard/>}></Route>

@@ -54,8 +54,10 @@ export const Loginpageuser = () => {
   };
 
   return ( 
-    <div className="card-body login-card-body" style={{ marginTop: 90, marginLeft: 450, marginRight: 400, textAlign: 'center', borderRadius: 5, borderWidth: 2, borderColor: 'blue', borderStyle: 'double' }}>
-      <div className="card-header text-center" style={{ borderWidth: 0.5, borderColor: 'grey', borderStyle: 'solid' }}>
+    <div className="register-box" style={{ marginTop: 90, marginLeft: 560, textAlign: 'center', borderRadius: 5, borderWidth: 0, borderColor: 'blue', borderStyle: 'double' }}>
+      
+      <div className="card card-outline card-primary">
+      <div className="card-header text-center">
         <a href="./" className="h1"><b>Wear</b>Share</a>
       </div>
       
@@ -69,9 +71,7 @@ export const Loginpageuser = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <div className="input-group-text">
-            <span className="bi bi-envelope" />
-          </div>
+         
         </div>
         {errors.email && <p className="text-danger">{errors.email}</p>}
 
@@ -83,17 +83,15 @@ export const Loginpageuser = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <div className="input-group-text">
-            <span className="bi bi-lock-fill" />
-          </div>
+         
         </div>
         {errors.password && <p className="text-danger">{errors.password}</p>}
 
-        <div className="d-grid gap-2">
-          <button type="submit" className="btn btn-primary">  
+        
+          <button type="submit" className="btn btn-primary btn-block">  
             Sign In
           </button>
-        </div>
+        
 
         {errors.general && <p className="text-danger">{errors.general}</p>}
       </form>
@@ -106,6 +104,7 @@ export const Loginpageuser = () => {
         <Link to="/Signup" className="text-center">Register a new membership</Link>
       </p>
     </div>
+  </div>
   );
 };
 
