@@ -60,7 +60,7 @@ export const Loginpageuser = () => {
       <div className="card-header text-center">
         <a href="./" className="h1"><b>Wear</b>Share</a>
       </div>
-      
+      <div className="card-body">
       <p className="login-box-msg">Sign in with us</p>
       <form onSubmit={handleSubmit}>
         <div className="input-group mb-3"> 
@@ -103,6 +103,7 @@ export const Loginpageuser = () => {
       <p className="mb-0">
         <Link to="/Signup" className="text-center">Register a new membership</Link>
       </p>
+      </div>
     </div>
   </div>
   );

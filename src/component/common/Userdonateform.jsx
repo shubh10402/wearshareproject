@@ -76,12 +76,45 @@ export const Userdonateform = () => {
         </div>
 
         <div className="form-group">
+          <label>Address</label>
+          <textarea 
+            {...register('address', { required: 'Address is required',message: 'Enter an address' })} 
+            className="form-control">
+          </textarea>
+        </div>
+        <div className="form-group">
+          <label>City</label>
+          <input 
+            {...register('city', { 
+              required: 'City is required', 
+              minLength: { value: 3, message: 'Minimum length is 3 characters' } 
+            })} 
+            className="form-control" 
+          />
+          {errors.city && <span className="text-danger">{errors.city.message}</span>}
+          
+        </div>
+        <div className="form-group">
+          <label>Pin-Code</label>
+          <input 
+            {...register('pincode', { 
+              required: 'Pincode is required', 
+              minLength: { value: 6, message: 'Wrong Pincode Minimum length of picode is 6 characters' }, 
+              maxLength: { value: 6, message: 'Wrong Pincode Max length of is 6 characters' }
+            })} 
+            className="form-control" 
+          />
+          {errors.pincode && <span className="text-danger">{errors.pincode.message}</span>}
+        </div>
+
+        <div className="form-group">
           <label>Number of Clothes</label>
           <input 
             type="number" 
             {...register('numClothes', { 
               required: 'This field is required', 
-              min: { value: 1, message: 'Must be at least 1' } 
+              min: { value: 1, message: 'Must be at least 1 ' }, 
+              max: { value: 100, message: 'Must be at most 100' }
             })} 
             className="form-control" 
           />
@@ -125,17 +158,7 @@ export const Userdonateform = () => {
           {errors.fabric && <span className="text-danger">{errors.fabric.message}</span>}
         </div>
 
-        <div className="form-group">
-          <label>Color</label>
-          <select {...register('color', { required: 'Select a color' })} className="form-control">
-            <option value="">Select...</option>
-            <option>Red</option>
-            <option>Blue</option>
-            <option>Black</option>
-            <option>White</option>
-          </select>
-          {errors.color && <span className="text-danger">{errors.color.message}</span>}
-        </div>
+       
 
         <div className="form-group">
           <label>Size</label>
