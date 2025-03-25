@@ -12,7 +12,7 @@ export const Dashboard = () => {
   // Fetch User login Data
   useEffect(() => {
     axios
-      .get("http://localhost:3001/Userlogindata")
+      .get("http://localhost:3001/user/Userlogindata")
       .then((response) => setUser(response.data))
       .catch((err) => console.log("Error fetching users:", err));
   }, []);

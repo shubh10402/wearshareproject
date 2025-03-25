@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, isCookie } from 'react-router-dom';
 
 axios.defaults.withCredentials = true; // Set globally
 
@@ -34,7 +34,7 @@ export const Loginpageuser = () => {
     
     if (!validate()) return;
 
-    axios.post('http://localhost:3001/login', { email, password })
+    axios.post('http://localhost:3001/auth/login', { email, password })
       .then(result => {
         console.log(result.data);
         if (result.data.Status === "Success") {

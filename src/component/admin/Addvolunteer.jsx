@@ -1,22 +1,32 @@
-import React, {useState} from 'react';
+import axios from 'axios';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 
 
 export const Addvolunteer = () => {
-  const [volunteer, setVolunteer] = useState([{
-    Name: "ram",
-    Email: "ram123",
-    Phone: 123456789,
-    Address: "123 alwar rajasthan ",
-    City: "alwar",
-    Area: "rajasthan"
-  }])
+  // const [volunteer, setVolunteer] = useState([{
+  //   name: "",
+  //   email: "",
+  //   phone ,
+  //   address: "",
+  //   city: "",
+  //   area: ""
+  // }])
+  const [volunteer, setVolunteer] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/volunteer/volunteer")
+      .then((response) => setVolunteer(response.data))
+      .catch((err) => console.log("Error fetching users:", err));
+  }, []);
+  
   return (
-    <div className="d-flex vh-100 bg-body-secondary justify-content-center align-items-center">
+    <div className="d-flex vh-100 justify-content-center align-items-center ">
       
-    <div className='w-50 bg-white rounded p6'>
+      
+    <div className='border border-dark p-6 border-2'>
       <h1 style={{ textAlign: "center"}}>Volunteer Dashboard</h1>
-      <Link to="/Createvolunteer"className="btn btn-primary">Create</Link> 
+      <Link to="/Createvolunteer"className="btn btn-primary justify-content-center">Create</Link>
       
       <br></br>
       
@@ -39,20 +49,24 @@ export const Addvolunteer = () => {
           {
             volunteer.map((volunteer) => {
               return <tr>
-                <td>{volunteer.Name}</td>
-                <td>{volunteer.Email}</td>
-                <td>{volunteer.Phone}</td>
-                <td>{volunteer.Address}</td>
-                <td>{volunteer.City}</td>
-                <td>{volunteer.Area}</td>
+                <td>{volunteer.name}</td>
+                <td>{volunteer.email}</td>
+                <td>{volunteer.phone}</td>
+                <td>{volunteer.address}</td>
+                <td>{volunteer.city}</td>
+                <td>{volunteer.area}</td>
                 <td>
                   <Link to={'/Updatevolunteer'} className="btn btn-primary">Update</Link>
                   <Link to={'/Deletevolunteer'}className="btn btn-danger">Delete</Link>
+                  
                 </td>
+                
               </tr>
+              
             })
           } 
         </tbody>
+        
         </table>
 </div>
 </div>

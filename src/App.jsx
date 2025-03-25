@@ -13,7 +13,7 @@ import { Forgatpassword } from './component/common/Forgatpassword'
 import { Dashboard } from './component/admin/Dashboard'
 import{ Userdonateform} from './component/common/Userdonateform'
 import { Addvolunteer } from './component/admin/Addvolunteer'
-import {Createvolunteer} from './component/admin/Createvolunteer'
+import Createvolunteer from './component/admin/Createvolunteer'
 import Updatevolunteer from './component/admin/Updatevolunteer'
 import Deletevolunteer from './component/admin/Deletevolunteer'
 
