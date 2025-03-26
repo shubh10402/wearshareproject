@@ -16,7 +16,6 @@ app.use(express.json());
 app.use(cors({      
     origin: ['http://localhost:5173'],      
     credentials: true,                  
-    methods: ['GET', 'POST'],
 }
 ));
 app.use(cookieParser());   // <-- Add this middleware to parse cookies
@@ -37,6 +36,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/userlogin"); //DB connection --> use
 app.use('/auth', authRoutes); //User routes for user login
 app.use('/volunteer', volunteerRoutes); //Volunteer routes for volunteer registration
 app.use('/user', userRoutes); //User routes for user login
+
 
 //Server running or not
 app.listen(3001,()=>{       //Server running on port 3001

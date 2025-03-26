@@ -12,5 +12,23 @@ const getVolunteer=(req,res) => {    // request the data from volunteer page
     .then(user => res.json(user))
     .catch(err => res.json(err))
 }
+const getVolunteerById=(req,res) => {    // request the data from volunteer page
+    volunteerModel.findById(req.params.id)                    //fetch all the records from a table 
+    .then(user => res.json(user))
+    .catch(err => res.json(err))
+}
 
-module.exports={Createvolunteer,getVolunteer}  //Exporting Createvolunteer and getVolunteer
+const Updatevolunteer=(req,res)=>{ //Update volunteer
+    console.log(req.body)
+    console.log(req.params.id)
+    volunteerModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    .then(user=>res.json(user))
+    .catch(err=>res.json(err))
+}
+const Deletevolunteer=(req,res)=>{ //Delete volunteer
+    volunteerModel.findByIdAndDelete(req.params.id,req.body,{new:true})
+    console.log(req.params.id)
+    .then(user=>res.json(user))
+    .catch(err=>res.json(err))
+}
+module.exports={Createvolunteer,getVolunteer,getVolunteerById,Updatevolunteer,Deletevolunteer}  //Exporting Createvolunteer and getVolunteer

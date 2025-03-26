@@ -12,5 +12,6 @@ const VolunteerSchema = new mongoose.Schema({
     city:String,    
     area:String
 });
+
 const volunteerModel = new mongoose.model("volunteer",VolunteerSchema);
 module.exports=volunteerModel

@@ -57,7 +57,7 @@ function App() {    //App function
             <Route path='/Createvolunteer' element={<Createvolunteer/>}></Route>
       </Routes>
       <Routes>
-            <Route path='/Updatevolunteer' element={<Updatevolunteer/>}></Route>
+            <Route path='/Updatevolunteer/:id' element={<Updatevolunteer/>}></Route>
       </Routes>
       <Routes>
             <Route path='/Deletevolunteer' element={<Deletevolunteer/>}></Route>

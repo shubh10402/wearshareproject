@@ -19,6 +19,15 @@ export const Addvolunteer = () => {
       .then((response) => setVolunteer(response.data))
       .catch((err) => console.log("Error fetching users:", err));
   }, []);
+  const handleDelete = (id) => {
+    axios.delete('http://localhost:3001/volunteer/Deletevolunteer/' + id)
+    .then((response) => {
+      console.log(response.data)
+      window.location.reload()
+      setVolunteer(volunteer.filter((volunteer) => volunteer._id !== id))
+    .catch((err) => console.log(err))
+    })
+  }
   
   return (
     <div className="d-flex vh-100 justify-content-center align-items-center ">
@@ -56,8 +65,8 @@ export const Addvolunteer = () => {
                 <td>{volunteer.city}</td>
                 <td>{volunteer.area}</td>
                 <td>
-                  <Link to={'/Updatevolunteer'} className="btn btn-primary">Update</Link>
-                  <Link to={'/Deletevolunteer'}className="btn btn-danger">Delete</Link>
+                  <Link to={`/Updatevolunteer/${volunteer._id}`} className="btn btn-primary">Update</Link>
+                  <button className="btn btn-danger" onClick={(e) => handleDelete(volunteer._id)}>Delete</button>
                   
                 </td>
                 
