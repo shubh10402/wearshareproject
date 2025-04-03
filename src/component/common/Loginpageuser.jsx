@@ -40,7 +40,10 @@ export const Loginpageuser = () => {
         if (result.data.Status === "Success") {
           if (result.data.role === 'admin') {
             navigate('/Dashboard');
-          } else {
+          } else if (result.data.role==='volunteer'){
+            navigate('/')
+          }
+          else {
             navigate('/Userdonateform'); // Redirect non-admin users
           }
         } else {

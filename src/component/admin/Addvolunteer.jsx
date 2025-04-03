@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-
+import { AdminSidebar } from '../admin/Adminsidebar';
 
 export const Addvolunteer = () => {
   // const [volunteer, setVolunteer] = useState([{
@@ -19,23 +19,26 @@ export const Addvolunteer = () => {
       .then((response) => setVolunteer(response.data))
       .catch((err) => console.log("Error fetching users:", err));
   }, []);
-  const handleDelete = (id) => {
-    axios.delete('http://localhost:3001/volunteer/Deletevolunteer/' + id)
-    .then((response) => {
-      console.log(response.data)
-      window.location.reload()
-      setVolunteer(volunteer.filter((volunteer) => volunteer._id !== id))
-    .catch((err) => console.log(err))
-    })
-  }
+  const handleDelete = async (id) => {
+    try {
+        const response = await axios.delete(`http://localhost:3001/volunteer/Deletevolunteer/${id}`);
+        console.log(response.data);
+
+        // Update state correctly
+        setVolunteer((prevVolunteers) => prevVolunteers.filter((volunteer) => volunteer._id !== id));
+    } catch (error) {
+        console.error("Error deleting volunteer:", error);
+    } 
+}; 
+  
   
   return (
-    <div className="d-flex vh-100 justify-content-center align-items-center ">
-      
-      
-    <div className='border border-dark p-6 border-2'>
+    <div className="d-flex  justify-content-center align-items-center ">
+       
+    <div className=''>
+    <Link to="/Dashboard"className="btn btn-primary justify-content-center">Home</Link>
       <h1 style={{ textAlign: "center"}}>Volunteer Dashboard</h1>
-      <Link to="/Createvolunteer"className="btn btn-primary justify-content-center">Create</Link>
+      <Link to="/Createvolunteer"className="btn btn-primary justify-content-center ">Create</Link>
       
       <br></br>
       

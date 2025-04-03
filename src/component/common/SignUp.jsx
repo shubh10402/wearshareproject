@@ -47,7 +47,7 @@ export const SignUp = () => {
     if (!validate()) return; // Stop form submission if validation fails
 
     axios  //Axios for user registration & Server connection 
-      .post('http://localhost:3001/register', { fullname, email, password  })
+      .post('http://localhost:3001/auth/register', { fullname, email, password  })
       .then((result) => {
         console.log(result.data);
         navigate('/Loginpageuser');

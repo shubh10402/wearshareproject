@@ -4,10 +4,12 @@ const jwt = require('jsonwebtoken');  //Jsonwebtoken for token
 const usermodel = require('../models/Userlogin') // Import user model
 const bcrypt = require('bcrypt');  //Bcrypt for password encryption
 // const { json } = require('express');
+
+
 const verifyUser= (req,res,next)=>{  //User verification
     const token = req.cookies.token;
     if(!token){
-        return res.json("Access Denied")
+        return res.json("Access Denied No token provided")
     }else{
         jwt.verify(token,'jwt-secret-key',(err,decoded)=>{
             if(err){
@@ -25,7 +27,7 @@ const verifyUser= (req,res,next)=>{  //User verification
 }
 //Login page for user 
 const login = (req,res)=>{  
-    const {email,password}=req.body;
+    const {email,password}=req.body;    
     
     //Password encryption using bcrypt 
     usermodel.findOne({email:email})

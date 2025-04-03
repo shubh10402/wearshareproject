@@ -27,7 +27,7 @@ export const Updatevolunteer = () => {
             axios.put(`http://localhost:3001/volunteer/volunteer/update/${id}`, data)
               .then((response) => {
                 console.log(response.data);
-                navigate("/volunteer");
+                navigate("/Addvolunteer");
               })
               .catch((err) => console.log("Error in updating Volunteer:", err));
           }
