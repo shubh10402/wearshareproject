@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
+
 //Export for DB connection
 export const SignUp = () => {
   const [fullname, setName] = useState(''); // State for full name

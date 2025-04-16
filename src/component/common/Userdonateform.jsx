@@ -8,12 +8,34 @@ import "../common/css/adminlte.min.css";
 export const Userdonateform = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
+  const [photos, setPhotos] = React.useState([]);
 
+  const handleUploadPhotos=(e)=>{
+    const newphotos = e.target.files;
+    setPhotos((prevPhotos) => [...prevPhotos, ...newphotos]);
+  }
+  
   const onSubmit = async (data) => {
     try {
-      console.log('Form Data:', data);
-      await axios.post('/api/submit', data);  // Replace with your API endpoint
-      navigate('/success');  // Redirect after submission
+      const formData = new FormData();
+      formData.append('name', data.name);
+      formData.append('email', data.email);
+      formData.append('phone', data.phone);
+      formData.append('address', data.address);
+      formData.append('city', data.city);
+      formData.append('pincode', data.pincode);
+      formData.append('numClothes', data.numClothes);
+      formData.append('condition', data.condition);
+      formData.append('type', data.type);
+      formData.append('fabric', data.fabric);
+      formData.append('size', data.size);
+      photos.forEach((file) => {
+        formData.append('images', file);
+      });
+      formData.append('additionalInfo', data.additionalInfo);
+
+      await axios.post('http://localhost:3001/donate/adddonate', formData);
+      navigate('/Thankyou');  // Redirect to Thank You page
     } catch (error) {
       console.error('Error submitting form', error);
     }
@@ -172,22 +194,27 @@ export const Userdonateform = () => {
           {errors.size && <span className="text-danger">{errors.size.message}</span>}
         </div>
 
-        <div className="form-group">
+        {/* {photos.length<1  */}
+          <div className="form-group">
           <label>Upload Photos</label>
           <input 
-            type="file" 
-            {...register('photos', { required: 'Upload at least one photo' })} 
+            type="file"
+            accept='image/*' 
+            onChange={handleUploadPhotos}
             multiple 
             className="form-control" 
+            required={true}
           />
           {errors.photos && <span className="text-danger">{errors.photos.message}</span>}
         </div>
+        {/* )} */}
 
         
         <div className="form-group">
           <label>Additional Information</label>
           <textarea 
             {...register('additionalInfo')} 
+            maxLength={150}
             className="form-control">
           </textarea>
         </div>

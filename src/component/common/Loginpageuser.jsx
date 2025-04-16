@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate, Link, isCookie } from 'react-router-dom';
 
+
 axios.defaults.withCredentials = true; // Set globally
 
 export const Loginpageuser = () => {
@@ -37,11 +38,11 @@ export const Loginpageuser = () => {
     axios.post('http://localhost:3001/auth/login', { email, password })
       .then(result => {
         console.log(result.data);
-        if (result.data.Status === "Success") {
+        if (result.data.status === "Success") {
           if (result.data.role === 'admin') {
             navigate('/Dashboard');
           } else if (result.data.role==='volunteer'){
-            navigate('/')
+            navigate('/Volunteerdashboard')
           }
           else {
             navigate('/Userdonateform'); // Redirect non-admin users
@@ -99,9 +100,9 @@ export const Loginpageuser = () => {
         {errors.general && <p className="text-danger">{errors.general}</p>}
       </form>
 
-      <p className="mb-1">
+      {/* <p className="mb-1">
         <a href="forgot-password.html">I forgot my password</a>
-      </p>
+      </p> */}
       
       <p className="mb-0">
         <Link to="/Signup" className="text-center">Register a new membership</Link>

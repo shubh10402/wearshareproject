@@ -23,11 +23,6 @@ export const UserNavbar = () => {
         </a>
       </li>
       <li className="nav-item d-none d-md-block">
-        <a href="#" className="nav-link">
-          Contact
-        </a>
-      </li>
-      <li className="nav-item d-none d-md-block">
         <Link class="nav-link" to="/SignUp">
           Register Now
           </Link>
@@ -38,6 +33,12 @@ export const UserNavbar = () => {
           Donate Now
           </Link>
         
+      </li>
+      
+      <li className="nav-item d-none d-md-block">
+        <a href="/NGORequest" className="nav-link">
+          NGO Request 
+        </a>
       </li>
       
     </ul>

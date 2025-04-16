@@ -3,8 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { UserNavbar } from './component/layout/UserNavbar'
 // import './index.css'
-import './component/common/css/adminlte.css'
-import './component/common/css/adminlte.min.css'
+// import './component/common/css/adminlte.css'
+// import './component/common/css/adminlte.min.css'
 import { UserSidebar } from './component/layout/UserSidebar'
 import { SignUp } from './component/common/SignUp'
 import { Routes, Route } from 'react-router-dom'
@@ -16,10 +16,13 @@ import { Addvolunteer } from './component/admin/Addvolunteer'
 import Createvolunteer from './component/admin/Createvolunteer'
 import Updatevolunteer from './component/admin/Updatevolunteer'
 import Deletevolunteer from './component/admin/Deletevolunteer'
-
-
-
-
+import Requestdonate from './component/common/Requestdonate'
+import RequestedDonation  from './component/common/RequestedDonation'
+import NGORequest from './component/common/NGORequest'
+import Thankyou from './component/common/Thankyou'
+import Home from './component/common/Home'
+import Volunteerlist from './component/common/volunteer/Volunteerlist'
+import VolunteerDashboard from './component/common/volunteer/Volunteerdashboard'
 function App() {    //App function
   
   return (      //Return for App function
@@ -36,6 +39,7 @@ function App() {    //App function
         
                   {/* Routing  for signup&login */}
        <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignUp/>}></Route>  
        </Routes>
        <Routes>
@@ -62,7 +66,27 @@ function App() {    //App function
       <Routes>
             <Route path='/Deletevolunteer/:id' element={<Deletevolunteer/>}></Route>
       </Routes>
-        
+       <Routes>
+            <Route path='/Requestdonate' element={<Requestdonate/>}></Route>
+       </Routes>
+       <Routes>
+            <Route path='/RequestedDonation' element={<RequestedDonation/>}></Route>
+       </Routes>
+       <Routes>
+            <Route path='/NGORequest' element={<NGORequest/>}>
+      </Route>
+    
+       </Routes>
+       <Routes>
+            <Route path='/Thankyou' element={<Thankyou />} />
+       </Routes>
+       <Routes>
+            <Route path='/Volunteerlist' element={<Volunteerlist />} />
+        </Routes>
+            <Routes>
+                  <Route path='/volunteerdashboard' element={<VolunteerDashboard />} />
+                  <Route path='/VolunteerDashboard' element={<VolunteerDashboard />} />
+            </Routes>
        
        </div>
 
