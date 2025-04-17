@@ -9,43 +9,60 @@ export const Userdonateform = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const [photos, setPhotos] = React.useState([]);
+  const [submitError, setSubmitError] = React.useState('');
 
-  const handleUploadPhotos=(e)=>{
-    const newphotos = e.target.files;
-    setPhotos((prevPhotos) => [...prevPhotos, ...newphotos]);
-  }
+  const handleUploadPhotos = (e) => {
+    const newPhotos = Array.from(e.target.files);
+    setPhotos(newPhotos);
+  };
   
   const onSubmit = async (data) => {
     try {
       const formData = new FormData();
-      formData.append('name', data.name);
-      formData.append('email', data.email);
-      formData.append('phone', data.phone);
-      formData.append('address', data.address);
-      formData.append('city', data.city);
-      formData.append('pincode', data.pincode);
-      formData.append('numClothes', data.numClothes);
-      formData.append('condition', data.condition);
-      formData.append('type', data.type);
-      formData.append('fabric', data.fabric);
-      formData.append('size', data.size);
-      photos.forEach((file) => {
+      
+      // Append all form fields
+      Object.keys(data).forEach(key => {
+        if (key !== 'images') { // Skip images as we'll handle them separately
+          formData.append(key, data[key]);
+        }
+      });
+
+      // Append each photo file
+      photos.forEach((file, index) => {
         formData.append('images', file);
       });
-      formData.append('additionalInfo', data.additionalInfo);
 
-      await axios.post('http://localhost:3001/donate/adddonate', formData);
-      navigate('/Thankyou');  // Redirect to Thank You page
+      // Set the correct content type for multipart/form-data
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      };
+
+      const response = await axios.post('http://localhost:3001/donate/adddonate', formData, config);
+      
+      if (response.status === 200) {
+        navigate('/Thankyou');
+      }
     } catch (error) {
-      console.error('Error submitting form', error);
+      console.error('Error submitting form:', error);
+      if (error.response) {
+        setSubmitError(error.response.data.message || 'Failed to submit form. Please try again.');
+      } else {
+        setSubmitError('Network error. Please check your connection and try again.');
+      }
     }
   };
 
   return (
-    <div className="container mt-4" style={{ maxWidth: '600px' , border: '1px solid black', padding: '20px', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
-      <h2 > Donation Form</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-
+    <div className="container mt-4" style={{ maxWidth: '600px', border: '1px solid black', padding: '20px', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+      <h2>Donation Form</h2>
+      {submitError && (
+        <div className="alert alert-danger" role="alert">
+          {submitError}
+        </div>
+      )}
+      <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
         <div className="form-group">
           <label>Full Name</label>
           <input 
@@ -194,20 +211,22 @@ export const Userdonateform = () => {
           {errors.size && <span className="text-danger">{errors.size.message}</span>}
         </div>
 
-        {/* {photos.length<1  */}
-          <div className="form-group">
-          <label>Upload Photos</label>
+        <div className="form-group">
+          <label>Upload Photos (Required)</label>
           <input 
             type="file"
             accept='image/*' 
             onChange={handleUploadPhotos}
             multiple 
             className="form-control" 
-            required={true}
+            required
           />
-          {errors.photos && <span className="text-danger">{errors.photos.message}</span>}
+          {photos.length > 0 && (
+            <small className="text-muted">
+              {photos.length} photo(s) selected
+            </small>
+          )}
         </div>
-        {/* )} */}
 
         
         <div className="form-group">
@@ -219,7 +238,7 @@ export const Userdonateform = () => {
           </textarea>
         </div>
 
-        <button type="submit" className="btn btn-primary mt-3" >Submit</button>
+        <button type="submit" className="btn btn-primary mt-3">Submit</button>
       </form>
     </div>
   );

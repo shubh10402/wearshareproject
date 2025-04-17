@@ -9,6 +9,7 @@ const RequestedDonation = () => {
     const [requests, setRequests] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedImage, setSelectedImage] = useState(null);
 
     useEffect(() => {
         const fetchRequests = async () => {
@@ -25,6 +26,46 @@ const RequestedDonation = () => {
 
         fetchRequests();
     }, []);
+
+    // Image Modal
+    const ImageModal = ({ imageUrl, onClose }) => {
+        return (
+            <div className="modal show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.8)' }}>
+                <div className="modal-dialog modal-dialog-centered modal-lg">
+                    <div className="modal-content bg-transparent border-0">
+                        <div className="modal-header border-0 position-absolute" style={{ top: '10px', right: '10px', zIndex: 1 }}>
+                            <button 
+                                type="button" 
+                                className="btn btn-light rounded-circle p-2" 
+                                onClick={onClose}
+                                style={{
+                                    width: '40px',
+                                    height: '40px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    boxShadow: '0 2px 5px rgba(0,0,0,0.2)'
+                                }}
+                            >
+                                <span style={{ fontSize: '1.5rem', lineHeight: 1 }}>&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body text-center p-0">
+                            <img 
+                                src={imageUrl} 
+                                alt="Full size" 
+                                style={{ 
+                                    maxWidth: '100%', 
+                                    maxHeight: '80vh',
+                                    objectFit: 'contain'
+                                }} 
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    };
 
     if (loading) {
         return (
@@ -127,14 +168,19 @@ const RequestedDonation = () => {
                                                     key={index}
                                                     src={url}
                                                     alt={`Donation ${index + 1}`}
-                                                    className="img-thumbnail"
+                                                    className="img-thumbnail cursor-pointer"
                                                     style={{
-                                                        width: '100px',
-                                                        height: '100px',
+                                                        width: '250px',
+                                                        height: '250px',
                                                         objectFit: 'cover',
                                                         borderRadius: '8px',
-                                                        boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                                                        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                                                        cursor: 'pointer',
+                                                        transition: 'transform 0.2s'
                                                     }}
+                                                    onClick={() => setSelectedImage(url)}
+                                                    onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                                                    onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
                                                 />
                                             ))}
                                         </div>
@@ -152,6 +198,14 @@ const RequestedDonation = () => {
                     <h4 className="text-muted">No Donation Requests Found</h4>
                     <p className="text-muted">There are currently no donation requests available.</p>
                 </div>
+            )}
+
+            {/* Image Modal */}
+            {selectedImage && (
+                <ImageModal 
+                    imageUrl={selectedImage} 
+                    onClose={() => setSelectedImage(null)} 
+                />
             )}
         </div>
     );

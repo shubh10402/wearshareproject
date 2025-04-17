@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import heroImage from '../../images/image1.jpg';
 
 
 
@@ -57,66 +58,82 @@ export const SignUp = () => {
   };
 
   return (         //user registration Form with validation 
-    <div className="register-box" style={{ marginTop: 90, marginLeft: 560, textAlign: 'center' }}>
-      <div className="card card-outline card-primary">
-        <div className="card-header text-center">
-          <a href="./" className="h1"><b>Wear</b>Share</a>
-        </div>
-        <div className="card-body">
-          <p className="login-box-msg">Register With Us!</p>
-          <form onSubmit={handleSubmit}>
-            <div className="input-group mb-3">
-              <input                      //Full name input
-                type="text"
-                className="form-control"
-                placeholder="Full name" 
-                value={fullname}
-                onChange={(e) => setName(e.target.value)}
-              />
-              {errors.fullname && <p className="text-danger">{errors.fullname}</p>}
-            </div>
+    <div style={{ 
+      background: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${heroImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}>
+      <div className="register-box" style={{ 
+        margin: 'auto',
+        textAlign: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        padding: '5px',
+        borderRadius: '10px',
+        boxShadow: '0 0 20px rgba(0,0,0,0.3)'
+      }}>
+        <div className="card card-outline card-primary">
+          <div className="card-header text-center">
+            <a href="./" className="h1"><b>Wear</b>Share</a>
+          </div>
+          <div className="card-body">
+            <p className="login-box-msg">Register With Us!</p>
+            <form onSubmit={handleSubmit}>
+              <div className="input-group mb-3">
+                <input                      //Full name input
+                  type="text"
+                  className="form-control"
+                  placeholder="Full name" 
+                  value={fullname}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                {errors.fullname && <p className="text-danger">{errors.fullname}</p>}
+              </div>
 
-            <div className="input-group mb-3">
-              <input            //Email input
-                type="email"
-                className="form-control"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              {errors.email && <p className="text-danger">{errors.email}</p>}
-            </div>
+              <div className="input-group mb-3">
+                <input            //Email input
+                  type="email"
+                  className="form-control"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                {errors.email && <p className="text-danger">{errors.email}</p>}
+              </div>
 
-            <div className="input-group mb-3">
-              <input
-                type="password"    //Password input
-                className="form-control"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {errors.password && <p className="text-danger">{errors.password}</p>}
-            </div>
+              <div className="input-group mb-3">
+                <input
+                  type="password"    //Password input
+                  className="form-control"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                {errors.password && <p className="text-danger">{errors.password}</p>}
+              </div>
 
-            <div className="input-group mb-3">
-              <input
-                type="password"    //Retype password input
-                className="form-control"
-                placeholder="Retype password"
-                value={retypePassword}
-                onChange={(e) => setRetypePassword(e.target.value)}
-              />
-              {errors.retypePassword && <p className="text-danger">{errors.retypePassword}</p>}
-            </div>
- {/* Submit button */}
-            <button type="submit" className="btn btn-primary btn-block">Register</button>
-          </form>
+              <div className="input-group mb-3">
+                <input
+                  type="password"    //Retype password input
+                  className="form-control"
+                  placeholder="Retype password"
+                  value={retypePassword}
+                  onChange={(e) => setRetypePassword(e.target.value)}
+                />
+                {errors.retypePassword && <p className="text-danger">{errors.retypePassword}</p>}
+              </div>
+              {/* Submit button */}
+              <button type="submit" className="btn btn-primary btn-block">Register</button>
+            </form>
 
-          <a href="./Loginpageuser" className="text-center">I already have an account</a>
+            <a href="./Loginpageuser" className="text-center">I already have an account</a>
+          </div>
         </div>
       </div>
     </div>
-    
   );
 };
 //Export for SignUp

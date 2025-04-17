@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate, Link, isCookie } from 'react-router-dom';
-
+import heroImage from '../../images/image1.jpg';
 
 axios.defaults.withCredentials = true; // Set globally
 
@@ -58,58 +58,66 @@ export const Loginpageuser = () => {
   };
 
   return ( 
-    <div className="register-box" style={{ marginTop: 90, marginLeft: 560, textAlign: 'center', borderRadius: 5, borderWidth: 0, borderColor: 'blue', borderStyle: 'double' }}>
-      
-      <div className="card card-outline card-primary">
-      <div className="card-header text-center">
-        <a href="./" className="h1"><b>Wear</b>Share</a>
-      </div>
-      <div className="card-body">
-      <p className="login-box-msg">Sign in with us</p>
-      <form onSubmit={handleSubmit}>
-        <div className="input-group mb-3"> 
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-         
+    <div style={{ 
+      background: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${heroImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}>
+      <div className="register-box" style={{ 
+        margin: 'auto',
+        textAlign: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        padding: '5px',
+        borderRadius: '10px',
+        boxShadow: '0 0 20px rgba(0,0,0,0.3)'
+      }}>
+        <div className="card card-outline card-primary">
+          <div className="card-header text-center">
+            <a href="./" className="h1"><b>Wear</b>Share</a>
+          </div>
+          <div className="card-body">
+            <p className="login-box-msg">Sign in with us</p>
+            <form onSubmit={handleSubmit}>
+              <div className="input-group mb-3"> 
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              {errors.email && <p className="text-danger">{errors.email}</p>}
+
+              <div className="input-group mb-3">
+                <input
+                  type="password"
+                  className="form-control"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              {errors.password && <p className="text-danger">{errors.password}</p>}
+
+              <button type="submit" className="btn btn-primary btn-block">  
+                Sign In
+              </button>
+
+              {errors.general && <p className="text-danger">{errors.general}</p>}
+            </form>
+
+            <p className="mb-0">
+              <Link to="/Signup" className="text-center">Register a new membership</Link>
+            </p>
+          </div>
         </div>
-        {errors.email && <p className="text-danger">{errors.email}</p>}
-
-        <div className="input-group mb-3">
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-         
-        </div>
-        {errors.password && <p className="text-danger">{errors.password}</p>}
-
-        
-          <button type="submit" className="btn btn-primary btn-block">  
-            Sign In
-          </button>
-        
-
-        {errors.general && <p className="text-danger">{errors.general}</p>}
-      </form>
-
-      {/* <p className="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p> */}
-      
-      <p className="mb-0">
-        <Link to="/Signup" className="text-center">Register a new membership</Link>
-      </p>
       </div>
     </div>
-  </div>
   );
 };
 
