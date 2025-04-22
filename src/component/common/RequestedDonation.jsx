@@ -3,7 +3,7 @@ import axios from 'axios';
 import '../common/css/adminlte.css';
 import "../common/css/adminlte.min.css";
 import { Link } from 'react-router-dom';
-import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCity, FaCalendarAlt, FaImage, FaInfoCircle, FaTshirt } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCity, FaCalendarAlt, FaImage, FaInfoCircle, FaTshirt, FaClock } from 'react-icons/fa';
 
 const RequestedDonation = () => {
     const [requests, setRequests] = useState([]);
@@ -132,6 +132,19 @@ const RequestedDonation = () => {
                                     <p className="mb-1"><strong>Address:</strong> {request.address}</p>
                                     <p className="mb-1"><strong>City:</strong> {request.city}</p>
                                     <p className="mb-1"><strong>Pincode:</strong> {request.pincode}</p>
+                                </div>
+
+                                <div className="mb-3">
+                                    <h6 className="text-muted mb-2 text-center">
+                                        <FaCalendarAlt className="me-2" />
+                                        Pickup Information
+                                    </h6>
+                                    <p className="mb-1">
+                                        <strong>Pickup Date:</strong> {new Date(request.pickupDate).toLocaleDateString()}
+                                    </p>
+                                    <p className="mb-1">
+                                        <strong>Pickup Time:</strong> {request.pickupTime}
+                                    </p>
                                 </div>
 
                                 <div className="mb-3">

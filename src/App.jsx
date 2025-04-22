@@ -23,6 +23,8 @@ import Thankyou from './component/common/Thankyou'
 import Home from './component/common/Home'
 import Volunteerlist from './component/common/volunteer/Volunteerlist'
 import VolunteerDashboard from './component/common/volunteer/Volunteerdashboard'
+import AboutUs from './component/common/AboutUs'
+
 function App() {    //App function
   
   return (      //Return for App function
@@ -86,6 +88,9 @@ function App() {    //App function
             <Routes>
                   <Route path='/volunteerdashboard' element={<VolunteerDashboard />} />
                   <Route path='/VolunteerDashboard' element={<VolunteerDashboard />} />
+            </Routes>
+            <Routes>
+                  <Route path='/about' element={<AboutUs />} />
             </Routes>
        
        </div>

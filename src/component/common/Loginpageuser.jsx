@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate, Link, isCookie } from 'react-router-dom';
 import heroImage from '../../images/image1.jpg';
+import { FaEnvelope,FaLock,FaLockOpen } from 'react-icons/fa';
 
 axios.defaults.withCredentials = true; // Set globally
 
@@ -83,18 +84,23 @@ export const Loginpageuser = () => {
             <p className="login-box-msg">Sign in with us</p>
             <form onSubmit={handleSubmit}>
               <div className="input-group mb-3"> 
-                <input
+                <span className="input-group-text"><FaEnvelope /></span> {/* Icon for Email */}
+                <input //Email input
+                
                   type="email"
                   className="form-control"
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
+                
               </div>
               {errors.email && <p className="text-danger">{errors.email}</p>}
 
+
               <div className="input-group mb-3">
-                <input
+                <span className="input-group-text"><FaLock /></span> {/* Icon for Password */}
+                <input  //Password input
                   type="password"
                   className="form-control"
                   placeholder="Password"
@@ -105,6 +111,7 @@ export const Loginpageuser = () => {
               {errors.password && <p className="text-danger">{errors.password}</p>}
 
               <button type="submit" className="btn btn-primary btn-block">  
+                <FaLockOpen className="me-2" />  {/* Icon for Sign In */}
                 Sign In
               </button>
 

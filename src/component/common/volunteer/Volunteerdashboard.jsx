@@ -86,7 +86,10 @@ export const VolunteerDashboard = () => {
       <div className="row">
         <div className="col-12">
           <div className="flex-grow-1 ">
-            <h1 className="text-center mb-0 justify-content-center">Volunteer Dashboard</h1>
+            
+            <h1 className="text-center mb-0 justify-content-center">
+            <FaUser />
+              Volunteer Dashboard</h1>
             {/* <button 
               className="btn btn-outline-primary" 
               onClick={fetchData}

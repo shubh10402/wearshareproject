@@ -4,7 +4,7 @@ import '../common/css/adminlte.css';
 import "../common/css/adminlte.min.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { FaFacebook,FaInstagram,FaEnvelope,FaPhone,FaHome,FaHandHoldingHeart,FaTshirt} from 'react-icons/fa';
+import { FaFacebook,FaInstagram,FaEnvelope,FaPhone,FaHome,FaHandHoldingHeart,FaTshirt, FaHandsHelping, FaTruck, FaClipboardList, FaCamera, FaCalendarAlt, FaCheckCircle } from 'react-icons/fa';
 import heroImage from '../../images/image1.jpg';
 
 const Home = () => {
@@ -47,7 +47,7 @@ const Home = () => {
                         <div className="col-md-4 text-center mb-4" data-aos="fade-right" data-aos-delay="100">
                             <div className="card h-100">
                                 <div className="card-body">
-                                    <i className="fas fa-tshirt fa-3x text-primary mb-3 "></i>
+                                    <FaTshirt style={{ fontSize: '5rem' }} className="text-primary mb-3" />
                                     <h3 className="text-primary">Donate Clothes</h3>
                                     <p>Give your gently used clothes a second life by donating them to those in need.</p>
                                 </div>
@@ -56,8 +56,8 @@ const Home = () => {
                         <div className="col-md-4 text-center mb-4" data-aos="fade-up" data-aos-delay="200">
                             <div className="card h-100">
                                 <div className="card-body">
-                                    <i className="fas fa-hands-helping fa-3x text-primary mb-3"></i>
-                                    <h3 >Make an Impact</h3>
+                                    <FaHandsHelping style={{ fontSize: '5rem' }} className="text-primary mb-3" />
+                                    <h3>Make an Impact</h3>
                                     <p>Your donations help provide clothing to underprivileged communities.</p>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@ const Home = () => {
                         <div className="col-md-4 text-center mb-4" data-aos="fade-left" data-aos-delay="300">
                             <div className="card h-100">
                                 <div className="card-body">
-                                    <i className="fas fa-truck fa-3x text-primary mb-3"></i>
+                                    <FaTruck style={{ fontSize: '5rem' }} className="text-primary mb-3" />
                                     <h3 className="text-primary">Easy Pickup</h3>
                                     <p>Schedule a convenient pickup time for your donations.</p>
                                 </div>
@@ -76,27 +76,31 @@ const Home = () => {
                     {/* How It Works Section */}
                     <div className="row bg-light py-5">
                         <div className="col-12 text-center mb-4" data-aos="fade-up">
-                            <h2 className="text-primary">How It Works</h2>
+                            <h2 className="text">How It Works</h2>
                         </div>
                         <div className="col-md-3 text-center" data-aos="zoom-in" data-aos-delay="100">
-                            <div className="step-number">1</div>
-                            <h4>Fill the Form</h4>
+                            <div className="step-number"></div>
+                            <FaClipboardList style={{ fontSize: '4rem' }} className="text-primary mb-3" />
+                            <h4 className="text-primary">Fill the Form</h4>
                             <p>Provide details about your donation</p>
                         </div>
                         <div className="col-md-3 text-center" data-aos="zoom-in" data-aos-delay="200">
-                            <div className="step-number">2</div>
+                            <div className="step-number"></div>
+                            <FaCamera style={{ fontSize: '4rem' }} className="text-primary mb-3" />
                             <h4>Upload Photos</h4>
                             <p>Add images of the items you're donating</p>
                         </div>
                         <div className="col-md-3 text-center" data-aos="zoom-in" data-aos-delay="300">
-                            <div className="step-number">3</div>
-                            <h4>Schedule Pickup</h4>
+                            <div className="step-number"></div>
+                            <FaCalendarAlt style={{ fontSize: '4rem' }} className="text-primary mb-3" />
+                            <h4 className="text-primary">Schedule Pickup</h4>
                             <p>Choose a convenient pickup time</p>
                         </div>
                         <div className="col-md-3 text-center" data-aos="zoom-in" data-aos-delay="400">
-                            <div className="step-number">4</div>
-                            <h4>Get Confirmation</h4>
-                            <p>Receive pickup details via email</p>
+                            <div className="step-number"></div>
+                            <FaCheckCircle style={{ fontSize: '4rem' }} className="text-primary mb-3" />
+                            <h4> Donated Successfully </h4>
+                            <p>Your donation has been received Successfully</p>
                         </div>
                     </div>
 
@@ -127,20 +131,20 @@ const Home = () => {
                         <div className="col-md-4 mb-3" data-aos="fade-right" data-aos-delay="100">
                             <h5 className="text-primary">About WearShare</h5>
                             <p className="text-muted">
-                                WearShare is a platform connecting donors with NGOs to distribute clothes to those in need.
+                                WearShare is a platform connecting donors with NGO to distribute clothes to those in need.
                             </p>
                         </div>
                         <div className="col-md-4 mb-3" data-aos="fade-up" data-aos-delay="200">
-                            <h5 className="text-primary">Quick Links</h5>
+                            <h5 className="text-black">Quick Links</h5>
                             <ul className="list-unstyled">
                                 <li><Link to="/" className="text-muted">
-                                <FaHome className="me-2" />
+                                <FaHome  className="me-2" />
                                 Home</Link></li>
                                 <li><Link to="/SignUp" className="text-muted">
-                                <FaHandHoldingHeart className="me-2" />
+                                <FaHandHoldingHeart  className="me-2" />
                                 Donate Now</Link></li>
                                 <li><Link to="/NGORequest" className="text-muted">
-                                <FaTshirt className="me-2" />
+                                <FaTshirt  className="me-2" />
                                 NGO Request</Link></li>
                             </ul>
                         </div>
@@ -148,14 +152,14 @@ const Home = () => {
                             <h5 className="text-primary">Contact Us</h5>
                             <ul className="list-unstyled text-muted">
                                 <li>
-                                    <FaEnvelope className="me-2" />
+                                    <FaEnvelope  className="me-2" />
                                     Email: info@wearshare.com</li>
                                 <li>
-                                    <FaPhone className="me-2" />
+                                    <FaPhone  className="me-2" />
                                     Phone: +1 (123) 456-7890</li>
                                 <li>
-                                <FaInstagram className="me-2" />
-                                 <FaFacebook className="me-1" />
+                                <FaInstagram  className="me-2" />
+                                 <FaFacebook  className="me-1" />
                                  - Wearshare</li>
                             </ul>
                         </div>
@@ -164,7 +168,6 @@ const Home = () => {
                     <div className="text-center text-muted" data-aos="fade-up" data-aos-delay="400">
                         <p className="mb-0">&copy; {new Date().getFullYear()} WearShare. All rights reserved.</p>
                     </div>
-                    
                 </div>
             </footer>
         </div>

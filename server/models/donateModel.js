@@ -56,6 +56,21 @@ const donateSchema = new Schema({
         required: [true, 'Size is required'],
         enum: ['Small', 'Medium', 'Large', 'XL']
     },
+    pickupDate: {
+        type: Date,
+        required: [true, 'Pickup date is required'],
+        validate: {
+            validator: function(value) {
+                return value >= new Date();
+            },
+            message: 'Pickup date must be in the future'
+        }
+    },
+    pickupTime: {
+        type: String,
+        required: [true, 'Pickup time is required'],
+        enum: ['09:00-11:00', '11:00-13:00', '13:00-15:00', '15:00-17:00', '17:00-19:00']
+    },
     images: [{
         path: String,
         filename: String

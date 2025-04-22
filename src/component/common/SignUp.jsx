@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import heroImage from '../../images/image1.jpg';
+import { FaUser,FaEnvelope,FaLock,FaUserCircle,FaPlus } from 'react-icons/fa';
 
 
 
@@ -83,6 +84,7 @@ export const SignUp = () => {
             <p className="login-box-msg">Register With Us!</p>
             <form onSubmit={handleSubmit}>
               <div className="input-group mb-3">
+                <span className="input-group-text"><FaUser /></span>  {/* Icon for full name */}
                 <input                      //Full name input
                   type="text"
                   className="form-control"
@@ -94,6 +96,7 @@ export const SignUp = () => {
               </div>
 
               <div className="input-group mb-3">
+              <span className="input-group-text"><FaEnvelope /></span>  {/* Icon for Email */}
                 <input            //Email input
                   type="email"
                   className="form-control"
@@ -105,6 +108,7 @@ export const SignUp = () => {
               </div>
 
               <div className="input-group mb-3">
+              <span className="input-group-text"><FaLock /></span>  {/* Icon for Password*/}
                 <input
                   type="password"    //Password input
                   className="form-control"
@@ -116,6 +120,7 @@ export const SignUp = () => {
               </div>
 
               <div className="input-group mb-3">
+              <span className="input-group-text"><FaLock /></span>  {/* Icon for Password*/}
                 <input
                   type="password"    //Retype password input
                   className="form-control"
@@ -126,10 +131,15 @@ export const SignUp = () => {
                 {errors.retypePassword && <p className="text-danger">{errors.retypePassword}</p>}
               </div>
               {/* Submit button */}
-              <button type="submit" className="btn btn-primary btn-block">Register</button>
+              
+              <button type="submit" className="btn btn-primary btn-block">
+                <FaPlus className="me-1" />  {/* Icon for Register */}
+                Register</button>
             </form>
 
-            <a href="./Loginpageuser" className="text-center">I already have an account</a>
+            <a href="./Loginpageuser" className="text-center">
+            <FaUserCircle className="me-0" /> {/* Icon for Login */}
+             I already have an account</a>
           </div>
         </div>
       </div>

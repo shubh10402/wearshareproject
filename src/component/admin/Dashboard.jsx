@@ -67,8 +67,8 @@ export const Dashboard = () => {
           <div className="col-md-4">
             <div className="card bg-primary text-white">
               <div className="card-body">
-                <h5 className="card-title" >Total Users</h5>
-                <h2 className="card-text ">{stats.totalUsers} </h2>
+                <h5 className="card-title text-center" >Total Users</h5>
+                <h2 className="card-text text-center">{stats.totalUsers} </h2>
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@ export const Dashboard = () => {
             <div className="card bg-info text-white">
               <div className="card-body">
                 <h5 className="card-title">Total Donations</h5>
-                <h2 className="card-text">{stats.totalDonations}</h2>
+                <h2 className="card-text text-center">{stats.totalDonations}</h2>
               </div>
             </div>
           </div>

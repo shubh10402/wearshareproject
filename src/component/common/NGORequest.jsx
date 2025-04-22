@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../common/css/adminlte.css';
 import "../common/css/adminlte.min.css";
-import { FaPhone, FaTshirt, FaInfoCircle, FaCalendarAlt, FaSearch } from 'react-icons/fa';
+import { FaPhone, FaTshirt, FaInfoCircle, FaCalendarAlt, FaSearch,FaHandsHelping } from 'react-icons/fa';
 import heroImage from '../../images/image1.jpg';
 
+{/* Configure axios defaults */}
 const NGORequest = () => {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,7 +27,8 @@ const NGORequest = () => {
 
     fetchRequests();
   }, []);
-
+// Fetch requests when the component mounts
+  // Filter requests based on search term
   const filteredRequests = requests.filter(request => {
     if (!request) return false;
     
@@ -40,7 +42,7 @@ const NGORequest = () => {
       (request.numClothes && request.numClothes.toString().includes(searchTerm))
     );
   });
-
+  
   if (loading) {
     return (
       <div style={{ 
@@ -87,12 +89,17 @@ const NGORequest = () => {
       minHeight: '100vh',
       padding: '20px'
     }}>
+
+      {/* // Hero Section */}
       <div className="container-fluid py-4">
         <div className="row">
           <div className="col-12">
             <div className="card shadow-sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
               <div className="card-header bg-primary text-white">
-                <h3 className="card-title mb-0">NGO Donation Requests</h3>
+              {/*  Card Header */ }
+                <h3 className="card-title mb-0">
+                  <span className="me-2"><FaHandsHelping /></span>
+                  NGO Donation Requests</h3>
               </div>
               <div className="card-body">
                 {/* Search Bar */}
@@ -165,6 +172,13 @@ const NGORequest = () => {
   );
 };
 
+// Function to determine the badge class based on condition
+// This function returns a Bootstrap badge class based on the condition of the clothes
+// It maps different conditions to specific badge classes for styling
+// The function takes a condition string as input and returns the corresponding badge class
+// The function uses a switch statement to match the condition with its corresponding badge class
+// The function is used to display the condition of the clothes in a visually appealing way
+
 const getStatusBadgeClass = (condition) => {
   switch (condition.toLowerCase()) {
     case 'brand new':
@@ -181,5 +195,6 @@ const getStatusBadgeClass = (condition) => {
       return 'secondary';
   }
 };
+//Export for NGORequest
 
 export default NGORequest; 
